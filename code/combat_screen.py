@@ -1,7 +1,7 @@
 import pygame
 from player import Player
 from enemy import Enemy
-from 
+from health_bar import HealthBar
 
 class CombatScreen():
     def __init__(self, window_width, window_height):
@@ -27,12 +27,11 @@ class CombatScreen():
             self.sprites,
             "images/alien_enemy.png",
             ((window_width+box_length)/2,(window_height-box_length)/2),
-            ((window_width-box_length)/2,box_length),
+            ((window_width-box_length)/2,(3*box_length/4)),
             "zibzib",
-            "100",
+            100,
             None
-            )
-        
+        )
 
         # Graphics
         

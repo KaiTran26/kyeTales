@@ -1,22 +1,29 @@
 import pygame
 
-class health_bar(pygame.sprite.Sprite):
-    def __init__(self, groups, hp, max_hp, size, position):
+class HealthBar(pygame.sprite.Sprite):
+    def __init__(self, groups, max_hp, size, position):
         super().__init__(groups)
 
         self.image = pygame.Surface(size)
-        self.image.fill("Red")
-        self.rect = self.image.get_rect(center = position)
+        
+        self.rect = self.image.get_rect(topleft = position)
 
-        self.hp = hp
+        self.hp = max_hp
         self.max_hp = max_hp
         self.ratio = self.hp / self.max_hp
 
-    def update(self):
-        self.remaining_hp = pygame.Surface()
-        self.remaining_hp.fill("Green")
-        self.remaining_hp_rect = self.remaining_hp.get_rect(topleft = )
-        self.image.blit(self.remaining_hp,)
+        self.width, self.height = size
 
-        pygame.draw.rect(screen, "red", (x, y, width, height))
-        pygame.draw.rect(screen, "green", (x, y, width * ratio, height)) # As hp is lowered the red is revealed
+        self.update(max_hp)
+
+    def update(self, hp):
+
+        self.image.fill("Red")
+
+        ratio = hp / self.max_hp
+        green_width = int(ratio*self.width)
+
+        green_bar = pygame.Surface((green_width,self.height))
+        green_bar.fill("Green")
+
+        self.image.blit(green_bar, (0,0))
