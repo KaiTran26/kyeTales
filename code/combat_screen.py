@@ -1,10 +1,12 @@
 import pygame
 from player import Player
+from enemy import Enemy
+from 
 
 class CombatScreen():
     def __init__(self, window_width, window_height):
         self.sprites = pygame.sprite.Group() # Create Group
-        
+
         # Combat & Player
         box_length = window_height-(window_height/5) # Size logic
         self.combat_box = pygame.Rect( # No need for surf
@@ -19,6 +21,18 @@ class CombatScreen():
             (window_width/2,window_height/2), 
             self.combat_box
             )
+
+        # Enemy
+        zibzib = Enemy(
+            self.sprites,
+            "images/alien_enemy.png",
+            ((window_width+box_length)/2,(window_height-box_length)/2),
+            ((window_width-box_length)/2,box_length),
+            "zibzib",
+            "100",
+            None
+            )
+        
 
         # Graphics
         
