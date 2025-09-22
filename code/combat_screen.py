@@ -43,7 +43,7 @@ class CombatScreen():
 
     # Graphics
     def draw(self, screen):
-        screen.fill("Gray")
+        screen.fill("Dark Gray")
         pygame.draw.rect(screen, "white", self.combat_box, 10)
         self.sprites.draw(screen)
 
